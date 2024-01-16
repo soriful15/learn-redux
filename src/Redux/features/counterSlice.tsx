@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 interface CounterState {
   count: number;
+  actualValue: number[];
 }
 
 const initialState: CounterState = {
   count: 0,
+  actualValue: [],
 };
 
 const counterSlice = createSlice({
@@ -14,9 +16,18 @@ const counterSlice = createSlice({
   reducers: {
     increment: (state) => {
       state.count = state.count + 1;
+      if (state.count % 5 === 0) {
+        state.actualValue.push(state.count);
+      }
     },
     decrement: (state) => {
       state.count = state.count - 1;
+      if (state.count % 5 === 0) {
+        state.actualValue.push(state.count);
+        if (state.count % 5 === 0) {
+          state.actualValue.push(state.count);
+        }
+      }
     },
     // IncrementByValue: (state, action:PayloadAction<number>) => {
     IncrementByValue: (state, action: PayloadAction<{ value: number }>) => {

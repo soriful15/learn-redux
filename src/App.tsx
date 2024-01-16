@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "./Redux/hooks";
 
 const App = () => {
   // const { count } = useSelector((state) => state.counter);
-  const { count } = useAppSelector((state) => state.counter);
+  const { count, actualValue } = useAppSelector((state) => state.counter);
 
   // const dispatch = useDispatch();
   const dispatch = useAppDispatch();
@@ -37,6 +37,14 @@ const App = () => {
         >
           Decrement
         </button>
+      </div>
+
+      <div className="mt-4">
+        {actualValue.map((message, index) => (
+          <p key={index} className="text-green-500">
+            {message}
+          </p>
+        ))}
       </div>
     </div>
   );
