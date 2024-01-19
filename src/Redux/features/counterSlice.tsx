@@ -33,6 +33,9 @@ const counterSlice = createSlice({
     IncrementByValue: (state, action: PayloadAction<{ value: number }>) => {
       // state.count = state.count + action.payload;
       state.count = state.count + action.payload.value;
+      if (state.count % 5 === 0) {
+        state.actualValue.push(state.count);
+      }
     },
   },
 });
