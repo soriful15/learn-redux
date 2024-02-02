@@ -24,9 +24,6 @@ const counterSlice = createSlice({
       state.count = state.count - 1;
       if (state.count % 5 === 0) {
         state.actualValue.push(state.count);
-        if (state.count % 5 === 0) {
-          state.actualValue.push(state.count);
-        }
       }
     },
     // IncrementByValue: (state, action:PayloadAction<number>) => {
